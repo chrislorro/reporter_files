@@ -1,0 +1,97 @@
+File diffs:
+
+current_value '../usr/share/zoneinfo/UTC', should be '/usr/share/zoneinfo/Europe/London' (noop)
+
+--- /etc/chrony.conf	2021-12-14 16:34:40.850621224 +0000
++++ /tmp/puppet-file20220128-3468-wdk5jd	2022-01-28 11:53:23.021621170 +0000
+@@ -1,39 +1,29 @@
+-# These servers were defined in the installation:
+-server metadata.google.internal iburst
+-# Use public servers from the pool.ntp.org project.
+-# Please consider joining the pool (http://www.pool.ntp.org/join.html).
++# NTP servers
++server 0.pool.ntp.org iburst
++server 1.pool.ntp.org iburst
+ 
+ # Record the rate at which the system clock gains/losses time.
+ driftfile /var/lib/chrony/drift
+ 
+-# Allow the system clock to be stepped in the first three updates
+-# if its offset is larger than 1 second.
+-makestep 1.0 3
+-
+-# Enable kernel synchronization of the real-time clock (RTC).
++# Enable kernel RTC synchronization.
+ rtcsync
+ 
+-# Enable hardware timestamping on all interfaces that support it.
+-#hwtimestamp *
+-
+-# Increase the minimum number of selectable sources required to adjust
+-# the system clock.
+-#minsources 2
++# In first 3 updates step the system clock instead of slew
++# if the adjustment is larger than 10 seconds.
++makestep 10 3
+ 
+-# Allow NTP client access from local network.
+-#allow 192.168.0.0/16
++bindcmdaddress 127.0.0.1
++bindcmdaddress ::1
+ 
+-# Serve time even if not synchronized to a time source.
+-#local stratum 10
++# Serve time even if not synchronized to any NTP server.
++local stratum 10
+ 
+-# Specify file containing keys for NTP authentication.
+ keyfile /etc/chrony.keys
+ 
+-# Get TAI-UTC offset and leap seconds from the system tz database.
+-leapsectz right/UTC
++# Disable logging of client accesses.
++noclientlog
+ 
+-# Specify directory for log files.
+-logdir /var/log/chrony
++# Send a message to syslog if a clock adjustment is larger than 0.5 seconds.
++logchange 0.5
+ 
+-# Select which information is logged.
+-#log measurements statistics tracking
++logdir /var/log/chrony
+
+current_value '{md5}c0f99f5361bc0eb17af528272a0ac4c5', should be '{md5}1263da1977aebb1f5adc63caf56b4456' (noop)
+[diff redacted]
+current_value [redacted], should be [redacted] (noop)
+current_value 'absent', should be 'file' (noop)
+current_value 'absent', should be 'file' (noop)
+
+--- /etc/motd	2018-09-10 11:51:03.000000000 +0000
++++ /tmp/puppet-file20220128-3468-qqtddl	2022-01-28 11:53:23.465658534 +0000
+@@ -0,0 +1,22 @@
++  ===================================================================
++
++      UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED
++
++    You must have explicit, authorized permission to access or
++    configure this device. Unauthorized attempts and actions to
++    access or use this system may result in civil and/or criminal
++    penalties. All activities performed on this device are logged
++    and monitored.
++
++  ===================================================================
++
++      Hostname:         linskylab-5a8bd4-0.us-west1-c.c.emea-ps-lab.internal
++      Operating System: CentOS 8.5.2111
++      Kernel:           Linux
++      Domain:           us-west1-c.c.emea-ps-lab.internal
++      IP Address:       10.253.15.17
++      Processor:        Intel(R) Xeon(R) CPU @ 2.20GHz
++      Memory Size:      3.65 GiB
++      Uptime:           0 days
++
++  ===================================================================
+
+current_value '{md5}d41d8cd98f00b204e9800998ecf8427e', should be '{md5}4b489cd0fd0cb590a2016c249b1eb75a' (noop)
+current_value 'absent', should be 'file' (noop)
