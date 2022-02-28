@@ -1,0 +1,30 @@
+File diffs:
+
+
+--- /etc/motd	2013-06-07 14:31:32.000000000 +0000
++++ /tmp/puppet-file20220228-22283-13evd29	2022-02-28 16:28:57.756526001 +0000
+@@ -0,0 +1,22 @@
++  ===================================================================
++
++      UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED
++
++    You must have explicit, authorized permission to access or
++    configure this device. Unauthorized attempts and actions to
++    access or use this system may result in civil and/or criminal
++    penalties. All activities performed on this device are logged
++    and monitored.
++
++  ===================================================================
++
++      Hostname:         linskylab-b5501c-0.us-west1-c.c.emea-ps-lab.internal
++      Operating System: CentOS 7.9.2009
++      Kernel:           Linux
++      Domain:           us-west1-c.c.emea-ps-lab.internal
++      IP Address:       10.253.15.232
++      Processor:        Intel(R) Xeon(R) CPU @ 2.20GHz
++      Memory Size:      3.70 GiB
++      Uptime:           0 days
++
++  ===================================================================
+
+current_value '{md5}d41d8cd98f00b204e9800998ecf8427e', should be '{md5}dae774c80c1f1fae0cc39ab529f8a673' (noop)
